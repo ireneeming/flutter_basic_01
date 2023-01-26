@@ -48,8 +48,12 @@ class MyHomePage extends StatelessWidget {
           title,
         ),
       ),
-      body: const Center(
+      body: Container(
         child: Text('Hello, Flutter!!!!'),
+        padding: EdgeInsets.all(30),
+        color: Colors.blue,
+        height: 300,
+        width: 300,
       ),
     );
   }
