@@ -53,20 +53,17 @@ class MyHomePage extends StatelessWidget {
           ),
         ),
         body: Center(
-          child: Stack(
-            children: [
-              Image.network(
-                  'https://flutter-ko.dev/images/catalog-widget-placeholder.png',
-                  height: 200,
-                  width: 300),
-              Positioned(
-                left: 0,
-                bottom: 0,
-                child:
-                    Image.asset('images/sampleImg.png', width: 50, height: 50),
-              )
-            ],
-          ),
-        ));
+            child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            TextButton(onPressed: () {}, child: Text('Text Button')),
+            Padding(padding: EdgeInsets.all(20)),
+            ElevatedButton(onPressed: () {}, child: Text('Elevated Button')),
+            Padding(padding: EdgeInsets.all(20)),
+            OutlinedButton(onPressed: () {}, child: Text('Outlined Button')),
+            Padding(padding: EdgeInsets.all(20)),
+            IconButton(onPressed: () {}, icon: Icon(Icons.star))
+          ],
+        )));
   }
 }
