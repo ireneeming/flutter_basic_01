@@ -49,11 +49,19 @@ class MyHomePage extends StatelessWidget {
           ),
         ),
         body: Center(
-          child: Text('Hello, Text Widget!',
-              style: TextStyle(
-                  fontSize: 25,
-                  fontFamily: 'Pretendard',
-                  fontWeight: FontWeight.w400)),
+          // Column 자체를 가운데 정렬 시키고 싶으면 Center위젯을 사용하면 됨.
+          child: Column(
+            // column 자체를 화면상에서 정렬시키는 것이 아닌, Column 내의 children 위젯들을 정렬시키는 프로퍼티
+            mainAxisAlignment: MainAxisAlignment
+                .center, // Column 이 위에서 아래로 진행하기 때문에 main은 위에서 아래 방향
+            crossAxisAlignment:
+                CrossAxisAlignment.start, // cross 는 왼쪽에서 오른쪽으로 가는 방향
+            children: [
+              Text('1. First String', style: TextStyle(fontSize: 25)),
+              Text('2. First String', style: TextStyle(fontSize: 20)),
+              Text('3. First String', style: TextStyle(fontSize: 18)),
+            ],
+          ),
         ));
   }
 }
