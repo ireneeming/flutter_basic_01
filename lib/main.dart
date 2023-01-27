@@ -53,11 +53,19 @@ class MyHomePage extends StatelessWidget {
           ),
         ),
         body: Center(
-          child: ListView.builder(
-            itemCount: 50,
-            itemBuilder: (BuildContext context, int index) {
-              return Text('$index' + ' Text', style: TextStyle(fontSize: 25));
-            }, // builder라는 함수를 활용해서 ListView 만들기
+          child: Stack(
+            children: [
+              Image.network(
+                  'https://flutter-ko.dev/images/catalog-widget-placeholder.png',
+                  height: 200,
+                  width: 300),
+              Positioned(
+                left: 0,
+                bottom: 0,
+                child:
+                    Image.asset('images/sampleImg.png', width: 50, height: 50),
+              )
+            ],
           ),
         ));
   }
