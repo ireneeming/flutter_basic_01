@@ -49,16 +49,11 @@ class MyHomePage extends StatelessWidget {
           ),
         ),
         body: Center(
-          // child: Image.asset(
-          //   'images/sampleImg.png',
-          //   width: 100,
-          //   height: 100,
-          // ),
-          child: Image.network(
-            'https://i.ytimg.com/an/7oIAs-0G4mw/3687264029678630069_mq.jpg?v=6082f311',
-            width: 100,
-            height: 100,
-          ),
+          child: Text('Hello, Text Widget!',
+              style: TextStyle(
+                  fontSize: 25,
+                  fontFamily: 'Pretendard',
+                  fontWeight: FontWeight.w400)),
         ));
   }
 }
