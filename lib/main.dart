@@ -42,19 +42,23 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // Scaffold() 위젯. 앱 화면이 기본적으로 갖추고 있는 기능들을 선언해 놓은 위젯.
-      appBar: AppBar(
-        title: Text(
-          title,
+        // Scaffold() 위젯. 앱 화면이 기본적으로 갖추고 있는 기능들을 선언해 놓은 위젯.
+        appBar: AppBar(
+          title: Text(
+            title,
+          ),
         ),
-      ),
-      body: Container(
-        child: Text('Hello, Flutter!!!!'),
-        padding: EdgeInsets.all(30),
-        color: Colors.blue,
-        height: 300,
-        width: 300,
-      ),
-    );
+        body: Center(
+          // child: Image.asset(
+          //   'images/sampleImg.png',
+          //   width: 100,
+          //   height: 100,
+          // ),
+          child: Image.network(
+            'https://i.ytimg.com/an/7oIAs-0G4mw/3687264029678630069_mq.jpg?v=6082f311',
+            width: 100,
+            height: 100,
+          ),
+        ));
   }
 }
