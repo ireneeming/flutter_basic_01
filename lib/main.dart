@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
         // 그럴 때는 Hot-Restart 번개모양 오른쪽 버튼 누르면 됨.
         primarySwatch: Colors.green,
       ),
-      home: const MyHomePage(
+      home: MyHomePage(
           title:
               'Flutter Demo Home Page'), // MaterialApp 의 home 프로퍼티. 홈페이지, 즉 첫 화면을 나타내는 위젯이 들어가야 함. home 프로퍼티에 들어간 위젯은 MyHomePage 위젯으로, StatefulWidget임.
     );
@@ -35,12 +35,16 @@ class MyApp extends StatelessWidget {
 
 class MyHomePage extends StatelessWidget {
   final String title; // final은 클래스 내 선언되는 플로퍼티가 생성할 때 처음 설정되고 변경되지 않을 값일 때 사용.
-  const MyHomePage({super.key, required this.title});
+  List<Widget> myChildren = [];
+  MyHomePage({super.key, required this.title});
   // title 이라는 프로퍼티를 함께 선언해주고, 내부에 this.title로 넣어줌. this는 해당 객체 내 값에 접근하기 위한 키워드.
   // required 는 꼭 선언해줘야 하는 값이라는 뜻. title의 기본값 선언 안해줬지 때믄에 required 가 필요함.
 
   @override
   Widget build(BuildContext context) {
+    for (var i = 0; i < 50; i++) {
+      myChildren.add(Text('Hello, World!', style: TextStyle(fontSize: 25)));
+    }
     return Scaffold(
         // Scaffold() 위젯. 앱 화면이 기본적으로 갖추고 있는 기능들을 선언해 놓은 위젯.
         appBar: AppBar(
@@ -49,15 +53,15 @@ class MyHomePage extends StatelessWidget {
           ),
         ),
         body: Center(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment
-                .spaceAround, // flex 사용하여 justify-content 정렬방법과 비슷
-            children: [
-              Text('1. First', style: TextStyle(fontSize: 25)),
-              Text('2. First', style: TextStyle(fontSize: 20)),
-              Text('3. First', style: TextStyle(fontSize: 18))
-            ],
-          ),
-        ));
+            // child: Column(
+            //   mainAxisAlignment:
+            //       MainAxisAlignment.center, // flex 사용하여 justify-content 정렬방법과 비슷
+            //   children: myChildren,
+            // ),
+            child: ListView(
+          scrollDirection: Axis
+              .horizontal, // scrollDirection 프로퍼티를 사용하면 쉽게 방향을 설정할 수 있다. Axis.horizontal를 쓰면 row를 대체하는 방법으로 쓸 수 있음.
+          children: myChildren,
+        )));
   }
 }
