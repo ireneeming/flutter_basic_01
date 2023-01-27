@@ -42,9 +42,9 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    for (var i = 0; i < 50; i++) {
-      myChildren.add(Text('Hello, World!', style: TextStyle(fontSize: 25)));
-    }
+    // for (var i = 0; i < 50; i++) {
+    //   myChildren.add(Text('Hello, World!', style: TextStyle(fontSize: 25)));
+    // }
     return Scaffold(
         // Scaffold() 위젯. 앱 화면이 기본적으로 갖추고 있는 기능들을 선언해 놓은 위젯.
         appBar: AppBar(
@@ -53,15 +53,12 @@ class MyHomePage extends StatelessWidget {
           ),
         ),
         body: Center(
-            // child: Column(
-            //   mainAxisAlignment:
-            //       MainAxisAlignment.center, // flex 사용하여 justify-content 정렬방법과 비슷
-            //   children: myChildren,
-            // ),
-            child: ListView(
-          scrollDirection: Axis
-              .horizontal, // scrollDirection 프로퍼티를 사용하면 쉽게 방향을 설정할 수 있다. Axis.horizontal를 쓰면 row를 대체하는 방법으로 쓸 수 있음.
-          children: myChildren,
-        )));
+          child: ListView.builder(
+            itemCount: 50,
+            itemBuilder: (BuildContext context, int index) {
+              return Text('$index' + ' Text', style: TextStyle(fontSize: 25));
+            }, // builder라는 함수를 활용해서 ListView 만들기
+          ),
+        ));
   }
 }
