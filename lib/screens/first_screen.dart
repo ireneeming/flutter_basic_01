@@ -1,27 +1,50 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_basic_01/screens/second_screen.dart';
 
-class FirstScreen extends StatelessWidget {
+// 클래스를 2개로 나눔
+// StatefulWidget을 상속하는 FirstScreen 클래스, State를 상속하는 _FirstScreenState 클래스
+// State를 사용하기 위해서는 StatefulWidget을 사용해야 함.
+// StatefulWidget은 State를 상속받은 _FirstScreenState 클래스를 통해서 createState(상태를 생성)해야 함
+
+class FirstScreen extends StatefulWidget {
+  _FirstScreenState createState() => _FirstScreenState();
+}
+
+class _FirstScreenState extends State<FirstScreen> {
+  // State 정의하기
+  int count = 0;
+
+  // increase() 함수 작성 setState
+  void increase() {
+    setState(() {
+      count += 1;
+    });
+  }
+
+  void decrease() {
+    setState(() {
+      count -= 1;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('This is the First Screen'),
-            ElevatedButton(
-                onPressed: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                      // Navigator.of(context) 이것은, 현재 위젯인 Scaffold 화면에서 이동하겠다는 뜻.
-                      // .push로 화면 이동 구현, push말 그대로 다음 화면을 쌓겠다는 의미.
-                      // MaterialPageRoute에는 새로운 화면 SecondScreen을 빌드하는 방식으로 새 화면으로 이동하겠다는 내용 작성.
-                      builder: (BuildContext context) => SecondScreen(
-                            screenData: 'Data from First Screen!!!!',
-                          )));
-                },
-                child: Text('Go To Second Screen'))
+            Text(
+              '카운트: $count',
+              style: TextStyle(fontSize: 25),
+            ),
+            const Padding(padding: EdgeInsets.all(20)),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                ElevatedButton(onPressed: decrease, child: const Text('- 감소')),
+                ElevatedButton(onPressed: increase, child: const Text('+ 증가'))
+              ],
+            )
           ],
         ),
       ),
