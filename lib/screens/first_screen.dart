@@ -1,53 +1,34 @@
 import 'package:flutter/material.dart';
 
-// 클래스를 2개로 나눔
-// StatefulWidget을 상속하는 FirstScreen 클래스, State를 상속하는 _FirstScreenState 클래스
-// State를 사용하기 위해서는 StatefulWidget을 사용해야 함.
-// StatefulWidget은 State를 상속받은 _FirstScreenState 클래스를 통해서 createState(상태를 생성)해야 함
+// StatefulWidget 구조
+// StatefulWidget은 상태(state)를 포함한 위젯
+//
 
 class FirstScreen extends StatefulWidget {
-  _FirstScreenState createState() => _FirstScreenState();
+  // class 생성 시 StatefulWidget을 상속받음
+  _FirstScreenState createState() =>
+      _FirstScreenState(); // createState() 라는 메서드를 사용
 }
 
 class _FirstScreenState extends State<FirstScreen> {
-  // State 정의하기
-  int count = 0;
-
-  // increase() 함수 작성 setState
-  void increase() {
-    setState(() {
-      count += 1;
-    });
-  }
-
-  void decrease() {
-    setState(() {
-      count -= 1;
-    });
+  // State도 플러터 내부에 선언된 클래스, 이를 상속받아 _FirstScreenState라는 클래스 생성. FirstScreen에 대한 state임을 알려주기 위해 <FirstScreen>이라 명시
+  @override
+  void initState() {
+    // state 초기화 단계.필수는 아님. super.initState()를 통해 부모 클래스의 initState() 메서드를 함께 실행.
+    super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: Center(
-        child: Column(
-          children: [
-            Text(
-              '카운트: $count',
-              style: TextStyle(fontSize: 25),
-            ),
-            const Padding(padding: EdgeInsets.all(20)),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                ElevatedButton(onPressed: decrease, child: const Text('- 감소')),
-                ElevatedButton(onPressed: increase, child: const Text('+ 증가'))
-              ],
-            )
-          ],
-        ),
-      ),
+      body: Center(),
     );
+  }
+
+  @override
+  void dispose() {
+    // 사용된 위젯이 사라질 때 실행되는 단계. 앞선 단계에서 사용한 데이터 정리해야 할 때 사용.
+    super.dispose();
   }
 }
