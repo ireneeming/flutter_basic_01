@@ -17,7 +17,9 @@ class FirstScreen extends StatelessWidget {
                       // Navigator.of(context) 이것은, 현재 위젯인 Scaffold 화면에서 이동하겠다는 뜻.
                       // .push로 화면 이동 구현, push말 그대로 다음 화면을 쌓겠다는 의미.
                       // MaterialPageRoute에는 새로운 화면 SecondScreen을 빌드하는 방식으로 새 화면으로 이동하겠다는 내용 작성.
-                      builder: (BuildContext context) => SecondScreen()));
+                      builder: (BuildContext context) => SecondScreen(
+                            screenData: 'Data from First Screen!!!!',
+                          )));
                 },
                 child: Text('Go To Second Screen'))
           ],
